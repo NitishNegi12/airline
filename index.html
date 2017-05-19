@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Airline App</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/datepicker.css">
+	<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.7.2.js"></script>
+	<script type="text/javascript" src="js/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</head>
+<body ng-app="airlineApp">
+	<div class="pageWrapper container">
+		<header>
+			<img src="images/flight.jpg" class="logo">
+			<div class="header-div">
+				<div class="flight-div">Flight</div>
+				<div>Search Engine </div>
+			</div>
+		</header>
+		<section ng-controller="searchCtrl">
+			<aside class="flytBookingContainer">
+				<div class="bookingDetails">
+					<div>
+						<button ng-click="oneWayFlight()" class="onewayBtn">One Way</button>
+						<button ng-click="twoWayFlight()"  class="returnBtn">Return</button>
+					</div>
+					<div>
+						<input type="text" placeholder="Enter Origin" ng-model="searchLocation.origin" list="fromLocation">
+						<datalist id="fromLocation">
+							<option value="Delhi">
+							<option value="Kolkata">
+							<option value="Mumbai">
+							<option value="Pune">
+						</datalist>
+					</div>
+					<div>
+						<input type="text" placeholder="Enter Destination" ng-model="searchLocation.destination" list="toLocation">
+						<datalist id="toLocation">
+							<option value="Delhi">
+							<option value="Kolkata">
+							<option value="Mumbai">
+							<option value="Pune">
+						</datalist>
+					</div>
+					<div class="departDtWrap">
+					  <input type="text" placeholder="Departure Date" ng-model="departDate" datepicker />
+					</div>
+					<div class="arriveDtWrap"  ng-show="isTwoWay">
+					  <input type="text" placeholder="Return Date" ng-model="arriveDate" datepicker />
+					</div>
+					<div>
+						<select ng-model="passenger">
+							<option disabled selected>Select the Number of Passenger</option>
+							<option>1</option>
+							<option>2</option>
+						</select>
+					</div>
+					<div>
+						<input type="submit" class="searchFlyt" ng-click="searchFunc();" name="" value="Search">
+					</div>
+				</div>
+			</aside>
+			<section class="srchResultWrapper" ng-show="showRightSection">
+				<section class="selectedFlight">
+			   		<div class="locationLeft">
+			   			{{portLocations}}
+			   		</div>
+			   		<div class="DateRight">
+			   			<div class="dprtDate ">
+			   				<span>Depart :</span>
+			   				<span>{{departDate}}</span>
+			   			</div>
+			   			<div class="retnDate"  ng-show="isTwoWay">
+			   				<span>Return :</span>
+			   				<span>{{arriveDate}}</span>
+			   			</div>
+			   		</div>
+			   	</section> 
+			   			<section class="flight" ng-repeat="data in searchedFlights | filter:searchLocation" ng-hide="isTwoWay"> 
+			   				<section >
+			   					<section class="price">Rs {{data.price}}</section>
+						   		<section class="flytDetailsWrap">
+						   			<div class="onewayFlytDetlWrap">
+						   				<div class="flytNo">{{data.Flight_no}}</div>
+						   				<div class="srcToDestn">
+						   					<span class="source">{{data.origin}}</span>
+						   					<span> > </span>
+						   					<span class="destination">{{data.destination}}</span>
+						   				</div>
+						   				<div class="dprtDate">
+						   					<span>Depart :</span>
+						   					<span>{{data.depart_time}}</span>
+						   				</div>
+						   				<div class="retnDate">
+						   					<span>Arrive :</span>
+						   					<span>{{data.arrive_time}}</span>
+						   				</div>
+						   			</div>
+						   			<div class="returnFlytDetlWrap">
+						   			</div>
+						   			<div class="bookBtnWrapper">
+						   				<button class="bookFlytBtn">BOOK THIS FLIGHT</button>
+						   			</div>
+						   		</section>
+			   				</section>					   		
+					   	</section>
+					   	<section ng-if = "(roundTripsFirstHop == '') && !isTwoWay" class="errorMsg">  No Flights Available for the Searched Pair of Locations !</section>
+					   		<section ng-if = "(roundTripsSecondHop == '') && isTwoWay" class="errorMsg">  No Flights Available for this Round Trip !</section>
+					   	<!-- View for round trip -->
+					   	<section class="flight text-left" ng-repeat="data in roundTripsFirstHop track by $index" ng-show="isTwoWay && (roundTripsSecondHop != '')">
+					   		<section class="price">Rs {{(data.price | num) + (roundTripsSecondHop[$index].price | num)}}</section>
+					   		<section>
+					   			<div class="onewayFlytDetlWrap">
+					   				<div class="flytNo">{{data.Flight_no}}</div>
+					   				<div class="srcToDestn">
+					   					<span class="source">{{data.origin}}</span>
+					   					<span> > </span>
+					   					<span class="destination">{{data.destination}}</span>
+					   				</div>
+					   				<div class="dprtDate">
+					   					<span>Depart :</span>
+					   					<span>{{data.depart_time}}</span>
+					   				</div>
+					   				<div class="arriveTime">
+					   					<span>Arrive :</span>
+					   					<span>{{data.arrive_time}}</span>
+					   				</div>
+					   			</div>
+					   			<section class="onewayFlytDetlWrap" ng-repeat="data in roundTripsSecondHop track by $index">
+						   			<section ng-if="($index == 0)">
+						   			<div class="onewayFlytDetlWrap">
+						   				<div class="flytNo">{{data.Flight_no}}</div>
+						   				<div class="srcToDestn">
+						   					<span class="source">{{data.origin}}</span>
+						   					<span> > </span>
+						   					<span class="destination">{{data.destination}}</span>
+						   				</div>
+						   				<div class="dprtDate">
+						   					<span>Depart :</span>
+						   					<span>{{data.depart_time}}</span>
+						   				</div>
+						   				<div class="arriveTime">
+						   					<span>Arrive :</span>
+						   					<span>{{data.arrive_time}}</span>
+						   				</div>
+						   			</div>						   			
+						   		</section>
+					   		</section>
+					   			<div class="bookBtnWrapper">
+					   				<button class="bookFlytBtn">BOOK THIS FLIGHT</button>
+					   			</div>
+					   		</section>
+					   	</section>
+				</section>
+			</section>
+
+		</section>
+	</div>
+	<footer></footer>
+</body>
+</html>

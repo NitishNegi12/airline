@@ -1,0 +1,81 @@
+/*Css to style the CALENDER*/
+
+/*The following class specifies the datepicker’s width, positions it to the center, and adds drop shadow to the calendar.*/
+.ui-datepicker {
+  width: 216px;
+  height: auto;
+  margin: 5px auto 0;
+  font: 9pt Arial, sans-serif;
+  -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  -moz-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, .5);
+}
+
+/*The following class removes the default underline decoration from every anchor tag.*/
+.ui-datepicker a {
+  text-decoration: none;
+}
+
+/*The following class adds 100% width for the table.*/
+.ui-datepicker table {
+  width: 100%;
+  background: #FFFF66;
+}
+
+/*The following class styles the header.*/
+.ui-datepicker-header {
+  background: #000000;
+  color: #e0e0e0;
+  font-weight: bold;
+  -webkit-box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, 2);
+  -moz-box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+  box-shadow: inset 0px 1px 1px 0px rgba(250, 250, 250, .2);
+  text-shadow: 1px -1px 0px #000;
+  filter: dropshadow(color=#000, offx=1, offy=-1);
+  line-height: 30px;
+  border-width: 1px 0 0 0;
+  border-style: solid;
+  border-color: #111;
+}
+
+/*The following class center the Month position.*/
+.ui-datepicker-title {
+  text-align: center;
+}
+
+/*The following classes style the 'prev' and the 'next' buttons*/
+.ui-datepicker-prev{
+  float: left;
+}
+.ui-datepicker-next{
+  float: right;
+}
+.ui-datepicker-prev, .ui-datepicker-next{
+  cursor: pointer;
+  text-align: center;
+  width: 40px;
+}
+
+
+/*The following class provides white background to day names in tHead  */
+.ui-datepicker thead {
+  background-color: #f7f7f7;
+}
+
+.ui-datepicker tbody tr td{
+   text-align: center;
+}
+#ui-datepicker-div{
+  top: 252px !important;
+}
+
+
+/*The following class  */
+/*The following class  */
+/*The following class  */
+/*The following class  */
+/*The following class  */
+/*The following class  */
+/*The following class  */
+/*The following class  */
+/*The following class  */

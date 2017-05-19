@@ -1,0 +1,74 @@
+[{
+		"origin" : "Delhi",
+		"destination" : "Pune",
+		"price": "4200",
+		"Flight_no": "AL202",
+		"depart_time": "8 AM",
+		"arrive_time": "11 AM"
+	},
+	{
+		"origin" : "Delhi",
+		"destination" : "Pune",
+		"price": "3500",
+		"Flight_no": "AL203",
+		"depart_time": "8 AM",
+		"arrive_time": "6 AM"
+	},
+	{
+		"origin" : "Pune",
+		"destination" : "Delhi",
+		"price": "3900",
+		"Flight_no": "AL204",
+		"depart_time": "5 AM",
+		"arrive_time": "12 AM"
+	},
+	{
+		"origin" : "Pune",
+		"destination" : "Delhi",
+		"price": "5000",
+		"Flight_no": "AL204",
+		"depart_time": "10 AM",
+		"arrive_time": "12 AM"
+	},
+	{
+		"origin" : "Delhi",
+		"destination" : "Mumbai",
+		"price": "9000",
+		"Flight_no": "AL203",
+		"depart_time": "8 AM",
+		"arrive_time": "6 AM"
+	},
+	{
+		"origin" : "Pune",
+		"destination" : "Mumbai",
+		"price": "3700",
+		"Flight_no": "AL204",
+		"depart_time": "5 AM",
+		"arrive_time": "12 AM"
+	},
+	{
+		"origin" : "Mumbai",
+		"destination" : "Pune",
+		"price": "3700",
+		"Flight_no": "AL204",
+		"depart_time": "5 AM",
+		"arrive_time": "12 AM"
+	},
+	{
+		"origin" : "Delhi",
+		"destination" : "Kolkata",
+		"price": "3400",
+		"Flight_no": "AL203",
+		"depart_time": "8 AM",
+		"arrive_time": "6 AM"
+	},
+	{
+		"origin" : "Pune",
+		"destination" : "Kolkata",
+		"price": "8000",
+		"Flight_no": "AL204",
+		"depart_time": "5 AM",
+		"arrive_time": "12 AM"
+	}
+
+]
